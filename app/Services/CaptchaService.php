@@ -23,7 +23,7 @@ class CaptchaService
     // Нанесение текста CAPTCHA с случайными цветами
     for ($i = 0; $i < 4; $i++) {
     // Выбор цвета символа, который будет контрастным к фону
-    $randomColor = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
+    $randomColor = imagecolorallocate($image, rand(0, 255), rand(0, 150), rand(0, 150));
     $colorDiff = abs($randomColor - $bgColor);
     $threshold = 200; // Порог для определения контрастности
     if ($colorDiff < $threshold) {
