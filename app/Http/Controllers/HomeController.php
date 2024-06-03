@@ -4,37 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
-
+use App\Services\CaptchaService;
 
 class HomeController extends Controller
 {
-    public function generate()
+    private $captchaService;
+
+    public function __construct(CaptchaService $captchaService)
     {
-        // Генерация CAPTCHA и сохранение значения в сессии
-        $randomString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 0, 4);
-        session(['captcha' => $randomString]);
+        $this->captchaService = $captchaService;
+    }
 
-        // Создание изображения CAPTCHA и вывод его
-        $image = imagecreatetruecolor(70, 30);
-
-        // Определение цветов
-        $bgColor = imagecolorallocate($image, 52, 235, 146); // Белый фон
-        $textColor = imagecolorallocate($image, 245, 229, 2); // Черный текст
-
-        // Заполнение фона изображения
-        imagefill($image, 0, 0, $bgColor);
-
-        // Нанесение текста CAPTCHA
-        imagettftext($image, 16, 0, 10, 24, $textColor, public_path('fonts/comicz.ttf'), $randomString);
-
-        // Установка заголовка для вывода изображения
-        header('Content-Type: image/png');
-
-        // Вывод изображения в формате PNG
-        imagepng($image);
-
-        // Удаление изображения из памяти
-        imagedestroy($image);
+    public function captcha()
+    {
+        return $this->captchaService->generate();
     }
 
     public function index()

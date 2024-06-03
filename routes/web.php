@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\CaptchaService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -20,7 +21,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/add-message', [HomeController::class, 'store'])->name('add-message');
-Route::get('/captcha-image', [HomeController::class, 'generate'])->name('captcha-image');
+Route::get('/captcha-image', [CaptchaService::class, 'generate'])->name('captcha-image');
 Route::get('/sort', [HomeController::class, 'sort'])->name('sort');
 
 

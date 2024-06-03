@@ -46,10 +46,8 @@
                 @endif
             </button>
             <input type="hidden" name="sort_order" value="{{ $sort_by == 'created_at' && $sort_order == 'asc' ? 'desc' : 'asc' }}">
-        </form>
+        </form><hr>
+        <div class="text-right"><b>Всего сообщений:</b> <i class="badge">{{ $count }}</i></div><br/>
     </div>
-
-    <div class="text-right"><b>Всего сообщений:</b> <i class="badge">{{ $count }}</i></div><br/>
-
     @include('pages.messages._items')
 @stop
