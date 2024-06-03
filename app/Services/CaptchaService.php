@@ -11,7 +11,7 @@ class CaptchaService
     session(['captcha' => $randomString]);
 
     // Создание изображения CAPTCHA и вывод его
-    $image = imagecreatetruecolor(85, 30);
+    $image = imagecreatetruecolor(108, 30);
 
     // Определение цветов
     $bgColor = imagecolorallocate($image, 255, 255, 198);
@@ -31,7 +31,7 @@ class CaptchaService
     }
 
     // Нанесение символа
-    imagettftext($image, 16, rand(-15, 15), 10 + ($i * 15), 24, $randomColor, public_path('fonts/comicz.ttf'), $randomString[$i]);
+    imagettftext($image, 16, rand(-15, 15), 10 + ($i * 22), 24, $randomColor, public_path('fonts/comicz.ttf'), $randomString[$i]);
     }
 
     // Установка заголовка для вывода изображения
