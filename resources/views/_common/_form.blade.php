@@ -12,8 +12,7 @@
     </div>
 
     <div class="form-group">
-        <label for="captcha">CAPTCHA:</label>
-        <img src="{{ route('captcha-image') }}" alt="CAPTCHA Image"><br>
+        <label for="captcha">CAPTCHA: <img src="{{ route('captcha-image') }}" height="30" alt="CAPTCHA Image"></label>
         <input class="form-control" placeholder="CAPTCHA" name="captcha" type="text" id="captcha" required pattern="[a-zA-Z0-9]+" title="Только буквы и цифры">
     </div>
 
